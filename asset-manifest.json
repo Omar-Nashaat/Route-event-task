@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Route-event-task/static/css/main.eb76c94c.css",
-    "main.js": "/Route-event-task/static/js/main.f46cce03.js",
+    "main.js": "/Route-event-task/static/js/main.9bea7db5.js",
     "static/js/453.f9d18104.chunk.js": "/Route-event-task/static/js/453.f9d18104.chunk.js",
     "static/media/fa-solid-900.ttf": "/Route-event-task/static/media/fa-solid-900.bacd5de623fb563b961a.ttf",
     "static/media/fa-brands-400.ttf": "/Route-event-task/static/media/fa-brands-400.60127e352b7a11f7f1bc.ttf",
@@ -13,11 +13,11 @@
     "static/media/fa-v4compatibility.woff2": "/Route-event-task/static/media/fa-v4compatibility.cf7f5903d06b79ad60f1.woff2",
     "index.html": "/Route-event-task/index.html",
     "main.eb76c94c.css.map": "/Route-event-task/static/css/main.eb76c94c.css.map",
-    "main.f46cce03.js.map": "/Route-event-task/static/js/main.f46cce03.js.map",
+    "main.9bea7db5.js.map": "/Route-event-task/static/js/main.9bea7db5.js.map",
     "453.f9d18104.chunk.js.map": "/Route-event-task/static/js/453.f9d18104.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eb76c94c.css",
-    "static/js/main.f46cce03.js"
+    "static/js/main.9bea7db5.js"
   ]
 }
