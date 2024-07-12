@@ -4,7 +4,9 @@ import { Modal, Button } from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import style from './Home.module.css';
-import loading from '../../assets/loadingAnimation.json';
+import loadingAnimation from '../../assets/loadingAnimation.json';
+import loading from '../../assets/loading.json';
+import notFound from '../../assets/notFound.json';
 import Lottie from 'lottie-react';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -89,10 +91,10 @@ export default function Home() {
                     <span className={style.searchBg + " input-group-text p-2"}>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </span>
-                    <input 
-                        type="text" 
-                        className={style.searchBg + " form-control"} 
-                        placeholder='Search by customer name ..' 
+                    <input
+                        type="text"
+                        className={style.searchBg + " form-control"}
+                        placeholder='Search by customer name ..'
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />
@@ -100,39 +102,44 @@ export default function Home() {
             </div>
             {isLoading ? (
                 <div className='d-flex flex-column align-items-center'>
-                    <div className="col-md-5 col-12">
+                    <div className="col-md-4 col-12">
                         <div className='text-center'>
                             <Lottie animationData={loading}></Lottie>
                         </div>
                     </div>
                 </div>
-            ) : (
-                customers.length > 0 && transactions.length > 0 ? (
-                    <table className="table table-striped table-hover text-center">
-                        <thead className="table-primary">
-                            <tr>
-                                <th scope="col">Customer ID</th>
-                                <th scope="col">Customer Name</th>
-                                <th scope="col">Total Transactions Amount</th>
-                                <th scope="col">Transactions amount per day</th>
+            ) : (filteredCustomers.length > 0 ? (
+                <table className="table table-striped table-hover text-center">
+                    <thead className="table-primary">
+                        <tr>
+                            <th scope="col">Customer ID</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Total Transactions Amount</th>
+                            <th scope="col">Transactions amount per day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredCustomers.map((customer) => (
+                            <tr key={customer.id}>
+                                <th scope="row">{customer.id}</th>
+                                <td>{customer.name}</td>
+                                <td>{getTotalTransactionAmount(customer.id)}</td>
+                                <td><button className='btn btn-primary' onClick={() => handleViewGraph(customer)}>View Graph</button></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {filteredCustomers.map((customer) => (
-                                <tr key={customer.id}>
-                                    <th scope="row">{customer.id}</th>
-                                    <td>{customer.name}</td>
-                                    <td>{getTotalTransactionAmount(customer.id)}</td>
-                                    <td><button className='btn btn-primary' onClick={() => handleViewGraph(customer)}>View Graph</button></td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <p>No data available.</p>
-                )
-            )}
-            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                        ))}
+                    </tbody>
+                </table>
+            ) : (
+                <div className='d-flex flex-column align-items-center'>
+                    <div className="col-md-5 col-12">
+                        <div className='text-center'>
+                            <span className='fs-2'>Customer Not Found</span>
+                            <Lottie animationData={notFound}></Lottie>
+                        </div>
+                    </div>
+                </div>
+            ))}
+            <Modal centered show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Transaction Amount Per Day</Modal.Title>
                 </Modal.Header>
