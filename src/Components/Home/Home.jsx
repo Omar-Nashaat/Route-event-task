@@ -21,7 +21,7 @@ export default function Home() {
 
     const getData = () => {
         // This api is the result of Setting up a local server to host the JSON data on (jsonbin.io site).
-        axios.get(`https://api.jsonbin.io/v3/b/66908c06e41b4d34e410942b`, {
+        axios.get(`https://api.jsonbin.io/v3/b/6691c40fe41b4d34e41115e5`, {
             headers: {
                 'X-Master-Key': '$2a$10$mgNuqrjFX0CLTPi0D1U4U.OXHPluzTsR/cfnl..HYWDtI3hViqXmS',
                 'Y-Master-Key': '$2a$10$9OkPe7Vnx2ZiDg5s/ggF1u6unUINKCxBBmHHqTxhEwhYZPXtFBN2u'
